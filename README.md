@@ -56,3 +56,30 @@ options 填写配置编辑器的参数（参考ueditor官网）或者 \common\wi
       ...
       
     <?php ActiveForm::end(); ?>
+    
+    
+ 遇到的问题：
+UEditor 编辑器点击上传文件选择框会延迟几秒才会显示，反应很慢，上传图片选择框显示很慢。
+
+1、common\widgets\ueditor\vendor\dialogs\image\image.js中的下面代码
+
+accept: {
+  title: 'Images',
+  extensions: 'jpg,jpeg,png',
+  mimeTypes: 'image/*'}
+
+修改为：
+
+accept: {
+  title: 'Images',
+  extensions: 'jpg,jpeg,png',
+  mimeTypes: 'image/jpg,image/jpeg,image/png,image/gif' //修改这行  
+}
+
+2、common\widgets\ueditor\vendor\ueditor.all.js和ueditor.all.min.js中，搜索accept，将其后面的
+
+accept="image/*"
+
+修改为：
+
+accept="image/jpg,image/jpeg,image/png,image/gif"
