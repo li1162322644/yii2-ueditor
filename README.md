@@ -58,7 +58,7 @@ options 填写配置编辑器的参数（参考ueditor官网）或者 \common\wi
     <?php ActiveForm::end(); ?>
     
     
- 遇到的问题：
+ 三、遇到的问题：（http://www.blogxuan.com/php/show/323.html）
 UEditor 编辑器点击上传文件选择框会延迟几秒才会显示，反应很慢，上传图片选择框显示很慢。
 
 1、common\widgets\ueditor\vendor\dialogs\image\image.js中的下面代码
