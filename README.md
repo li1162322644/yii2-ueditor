@@ -1,10 +1,4 @@
-Yii2.0.7 扩展-百度编辑器（Ueditor）
-
-描述：
-
-最佳适用于yii2.0 高级版（advanced）应用框架
-
-版本相关：
+Yii2.0.7 扩展-百度编辑器（Ueditor）（非composer安装图片本地上传）
 
 Yii：2.0.6
 
@@ -15,10 +9,9 @@ Ueditor：1.4.3.1 （php版本）
 安装方法：
 
 1.下载yii2-ueditor
+（pscheckout、删除git信息，纳入版本库，）
 
-2.将下载的yii2-ueditor-master 修改 ueditor (注意：修改成其他文件名请修改插件内对应的命名空间)
-
-3.将文件方在 根目录/common/widgets 下即可
+2.将文件方在 根目录/common/widgets 下即可
 
 调用方法：
 
@@ -36,14 +29,20 @@ Ueditor：1.4.3.1 （php版本）
             ]
         ];
     }
+    //排除权限控制
+    public function allowActions(){
+        return ['ueditor'];
+    }
 
 第一种调用方式：
 
 在对应的渲染页面，即views下的页面中
 
-<?=common\widgets\ueditor\Ueditor::widget(['options'=>['initialFrameWidth' => 850,]])?>
+```php
+<?= common\widgets\ueditor\Ueditor::widget(['options'=>['initialFrameWidth' => 850,]])?>
+```
 
-options 填写配置编辑器的参数（参考ueditor官网）
+options 填写配置编辑器的参数（参考ueditor官网）或者 \common\widgets\ueditor\config.php
 
 第二种调用方式：
 
@@ -51,11 +50,8 @@ options 填写配置编辑器的参数（参考ueditor官网）
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'content')->widget('common\widgets\ueditor\Ueditor',[
-        'options'=>[
-            'initialFrameWidth' => 850,
-        ]
-    ]) ?>
+    <?= $form->field($model,'content')->widget('common\widgets\ueditor\Ueditor',['options'=>['maximumWords'=>10000,'initialFrameWidth'=>1200,'initialFrameHeight'=>300]]); ?>
+
     
       ...
       
