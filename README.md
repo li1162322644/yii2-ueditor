@@ -19,7 +19,7 @@ Ueditor：1.4.3.1 （php版本）
 
     public function actions(){
         return [
-            'upload'=>[
+            'ueditor'=>[
                 'class' => 'common\widgets\ueditor\UeditorAction',
                 'config'=>[
                     //上传图片配置
